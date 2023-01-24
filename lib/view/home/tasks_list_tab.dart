@@ -2,10 +2,11 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:calendar_timeline/calendar_timeline.dart';
+
 import '../../../model/task.dart';
 import '../../firebase_utils.dart';
 import 'task_widget.dart';
+import 'package:calender_picker/calender_picker.dart';
 
 class TasksListTab extends StatefulWidget {
   @override
@@ -20,24 +21,42 @@ class _TasksListTabState extends State<TasksListTab> {
     return Container(
       child: Column(
         children: [
-          CalendarTimeline(
-            initialDate: selectedDate,
-            firstDate: DateTime.now().subtract(Duration(days: 365)),
-            lastDate: DateTime.now().add(Duration(days: 365)),
-            onDateSelected: (date) {
-              if (date == null) return;
-              selectedDate = date;
-              setState(() {});
-            },
-            leftMargin: 20,
-            monthColor: Colors.black,
-            dayColor: Colors.black,
-            activeDayColor: Theme.of(context).primaryColor,
-            activeBackgroundDayColor: Colors.white,
-            dotsColor: Theme.of(context).primaryColor,
-            selectableDayPredicate: (date) => true,
-            locale: 'en',
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: CalenderPicker(
+              dateTextStyle: TextStyle(color: Colors.grey),
+              dayTextStyle: TextStyle(color: Colors.grey),
+              locale: 'en',
+              DateTime.now(),
+              initialSelectedDate: DateTime.now(),
+              selectionColor: Colors.white,
+              selectedTextColor: Colors.blue,
+              onDateChange: (date) {
+                // New date selected
+                setState(() {
+                  selectedDate = date;
+                });
+              },
+            ),
           ),
+          // CalendarTimeline(
+          //   initialDate: selectedDate,
+          //   firstDate: DateTime.now().subtract(Duration(days: 365)),
+          //   lastDate: DateTime.now().add(Duration(days: 365)),
+          //   onDateSelected: (date) {
+          //     if (date == null) return;
+          //     selectedDate = date;
+          //     setState(() {});
+          //   },
+          //   leftMargin: 30,
+          //   monthColor: Colors.black,
+          //   dayColor: Colors.black,
+          //   activeDayColor: Theme.of(context).primaryColor,
+          //   activeBackgroundDayColor: Colors.white,
+          //   dotsColor: Theme.of(context).primaryColor,
+          //   selectableDayPredicate: (date) => true,
+          //   locale: 'en',
+          // ),
           Expanded(
               child: StreamBuilder<QuerySnapshot<Task>>(
             stream: listenForTask(selectedDate),
