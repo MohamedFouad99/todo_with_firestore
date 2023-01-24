@@ -32,7 +32,59 @@ class MyThemeData {
     ),
     textTheme: TextTheme(
       headline1: TextStyle(
+        fontSize: 25,
+        color: colorBlack,
+        fontWeight: FontWeight.w900,
+      ),
+      subtitle1: TextStyle(
+        fontSize: 18,
+        color: colorWhite,
+        fontWeight: FontWeight.w500,
+      ),
+      subtitle2: TextStyle(
         fontSize: 20,
+        color: colorGreen,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyText1: TextStyle(
+        fontSize: 12,
+        color: colorBlack,
+      ),
+    ),
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: lightPrimary),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: lightPrimary,
+      unselectedItemColor: Colors.grey,
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: Colors.transparent,
+    ),
+  );
+  static final ThemeData darkTheme = ThemeData(
+    primaryColor: lightPrimary,
+    colorScheme: ColorScheme(
+      primary: lightPrimary,
+      onPrimary: colorWhite,
+      secondary: colorLightGreen,
+      onSecondary: colorWhite,
+      background: colorLightGreen,
+      error: Colors.red,
+      onError: Colors.red,
+      onSurface: Colors.black,
+      surface: Colors.white,
+      onBackground: lightPrimary,
+      brightness: Brightness.light,
+    ),
+    scaffoldBackgroundColor: colorLightGreen,
+    appBarTheme: AppBarTheme(
+      color: lightPrimary,
+      elevation: 0,
+      iconTheme: IconThemeData(color: colorWhite),
+    ),
+    textTheme: TextTheme(
+      headline1: TextStyle(
+        fontSize: 30,
         color: colorWhite,
         fontWeight: FontWeight.w700,
       ),
