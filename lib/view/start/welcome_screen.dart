@@ -11,10 +11,9 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Theme.of(context).primaryColor,
           tooltip: 'Get Started',
           onPressed: () {
-            Navigator.of(context).pushNamed(HomeScreen.routeName);
+            Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
           },
           child: Icon(
             Icons.arrow_right_alt_sharp,

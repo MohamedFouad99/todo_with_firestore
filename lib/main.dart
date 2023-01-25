@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'package:todo_with_firestore/view/my_theme.dart';
-import 'package:todo_with_firestore/view/setting/settings_tab.dart';
-import 'package:todo_with_firestore/view/start/welcome_screen.dart';
+import 'view/my_theme.dart';
+import 'view/setting/settings_tab.dart';
+import 'view/start/welcome_screen.dart';
 import 'firebase_options.dart';
 import 'view/home/home_screen.dart';
 

@@ -18,12 +18,20 @@ class _TasksListTabState extends State<TasksListTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: CalenderPicker(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          "today tasks",
+          style: Theme.of(context).textTheme.headline2,
+        ),
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            CalenderPicker(
               dateTextStyle: TextStyle(color: Colors.grey),
               dayTextStyle: TextStyle(color: Colors.grey),
               locale: 'en',
@@ -38,52 +46,52 @@ class _TasksListTabState extends State<TasksListTab> {
                 });
               },
             ),
-          ),
-          // CalendarTimeline(
-          //   initialDate: selectedDate,
-          //   firstDate: DateTime.now().subtract(Duration(days: 365)),
-          //   lastDate: DateTime.now().add(Duration(days: 365)),
-          //   onDateSelected: (date) {
-          //     if (date == null) return;
-          //     selectedDate = date;
-          //     setState(() {});
-          //   },
-          //   leftMargin: 30,
-          //   monthColor: Colors.black,
-          //   dayColor: Colors.black,
-          //   activeDayColor: Theme.of(context).primaryColor,
-          //   activeBackgroundDayColor: Colors.white,
-          //   dotsColor: Theme.of(context).primaryColor,
-          //   selectableDayPredicate: (date) => true,
-          //   locale: 'en',
-          // ),
-          Expanded(
-              child: StreamBuilder<QuerySnapshot<Task>>(
-            stream: listenForTask(selectedDate),
-            builder: (buildContext, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                // loading
-                return Center(
-                  child: CircularProgressIndicator(),
+            // CalendarTimeline(
+            //   initialDate: selectedDate,
+            //   firstDate: DateTime.now().subtract(Duration(days: 365)),
+            //   lastDate: DateTime.now().add(Duration(days: 365)),
+            //   onDateSelected: (date) {
+            //     if (date == null) return;
+            //     selectedDate = date;
+            //     setState(() {});
+            //   },
+            //   leftMargin: 30,
+            //   monthColor: Colors.black,
+            //   dayColor: Colors.black,
+            //   activeDayColor: Theme.of(context).primaryColor,
+            //   activeBackgroundDayColor: Colors.white,
+            //   dotsColor: Theme.of(context).primaryColor,
+            //   selectableDayPredicate: (date) => true,
+            //   locale: 'en',
+            // ),
+            Expanded(
+                child: StreamBuilder<QuerySnapshot<Task>>(
+              stream: listenForTask(selectedDate),
+              builder: (buildContext, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  // loading
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text('something went wrong');
+                  // show try again button
+                }
+                // we got data// show data
+                List<Task> tasksList = snapshot.data?.docs
+                        .map((docSnap) => docSnap.data())
+                        .toList() ??
+                    [];
+                return ListView.builder(
+                  itemBuilder: (_, index) {
+                    return TaskWidget(tasksList[index]);
+                  },
+                  itemCount: tasksList.length,
                 );
-              } else if (snapshot.hasError) {
-                return Text('something went wrong');
-                // show try again button
-              }
-              // we got data// show data
-              List<Task> tasksList = snapshot.data?.docs
-                      .map((docSnap) => docSnap.data())
-                      .toList() ??
-                  [];
-              return ListView.builder(
-                itemBuilder: (_, index) {
-                  return TaskWidget(tasksList[index]);
-                },
-                itemCount: tasksList.length,
-              );
-            },
-          ))
-        ],
+              },
+            ))
+          ],
+        ),
       ),
     );
   }
