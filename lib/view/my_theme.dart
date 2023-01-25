@@ -42,14 +42,19 @@ class MyThemeData {
         fontWeight: FontWeight.w500,
       ),
       subtitle1: TextStyle(
-        fontSize: 18,
-        color: colorWhite,
-        fontWeight: FontWeight.w500,
+        fontSize: 20,
+        color: lightPrimary,
+        fontWeight: FontWeight.w400,
       ),
       subtitle2: TextStyle(
         fontSize: 20,
         color: colorGreen,
         fontWeight: FontWeight.w400,
+      ),
+      headline3: TextStyle(
+        fontSize: 18,
+        color: colorWhite,
+        fontWeight: FontWeight.w500,
       ),
       bodyText1: TextStyle(
         fontSize: 12,
