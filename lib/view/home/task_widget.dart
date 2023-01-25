@@ -29,81 +29,107 @@ class _TaskWidgetState extends State<TaskWidget> {
             onPressed: (buildContext) {
               deleteTaskFromFireStore(widget.task);
             },
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(140),
+              topLeft: Radius.circular(140),
+              bottomRight: Radius.circular(18),
+              topRight: Radius.circular(18),
+            ),
             label: 'Delete',
             backgroundColor: Theme.of(context).colorScheme.error,
             icon: Icons.delete,
           ),
         ],
       ),
-      child: GestureDetector(
+      child: InkWell(
+        borderRadius: BorderRadius.circular(14),
         onTap: () {},
         child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
+          height: 90,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 12,
           ),
-          margin: EdgeInsets.all(8),
-          padding: EdgeInsets.all(12),
-          child: Row(
-            children: [
-              Container(
-                color: taskDone
-                    ? MyThemeData.colorGreen
-                    : Theme.of(context).primaryColor,
-                width: 2,
-                height: 80,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+            elevation: 0,
+            color: Colors.white,
+            child: Stack(
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        widget.task.title,
-                        style: taskDone
-                            ? Theme.of(context).textTheme.subtitle2
-                            : Theme.of(context).textTheme.subtitle1,
+                    Container(
+                      height: 90,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: taskDone
+                                ? MyThemeData.colorGreen
+                                : Theme.of(context).primaryColor,
+                            width: 6),
+                        borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(14.0),
+                            topLeft: Radius.circular(14.0)),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        widget.task.description,
-                        style: Theme.of(context).textTheme.bodyText1,
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Text(
+                              widget.task.title,
+                              style: taskDone
+                                  ? Theme.of(context).textTheme.subtitle2
+                                  : Theme.of(context).textTheme.subtitle1,
+                            ),
+                          ),
+                          Text(
+                            widget.task.description,
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        taskDone = true;
+                        setState(() {});
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: taskDone
+                                  ? Colors.white
+                                  : Theme.of(context).primaryColor,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 8, horizontal: 24),
+                            child: taskDone
+                                ? Text(
+                                    'Done!',
+                                    style: TextStyle(
+                                        color: MyThemeData.colorGreen,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                : Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                  ),
+                          ),
+                          SizedBox(width: 12),
+                        ],
                       ),
                     ),
                   ],
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  taskDone = true;
-                  setState(() {});
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: taskDone
-                        ? Colors.white
-                        : Theme.of(context).primaryColor,
-                  ),
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-                  child: taskDone
-                      ? Text(
-                          'Done!',
-                          style: TextStyle(
-                              color: MyThemeData.colorGreen,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
-                      : Icon(
-                          Icons.check,
-                          color: Colors.white,
-                        ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

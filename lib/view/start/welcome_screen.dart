@@ -46,7 +46,7 @@ class WelcomeScreen extends StatelessWidget {
                   children: [
                     Text(
                       'Manage your daily tasks easily to increase\nyour productivity with following progress\nyou have achieved',
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: Theme.of(context).textTheme.headline3,
                     ),
                   ],
                 ),
