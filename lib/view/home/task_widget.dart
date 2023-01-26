@@ -82,13 +82,26 @@ class _TaskWidgetState extends State<TaskWidget> {
                             child: Text(
                               widget.task.title,
                               style: taskDone
-                                  ? Theme.of(context).textTheme.subtitle2
+                                  ? Theme.of(context)
+                                      .textTheme
+                                      .headline4!
+                                      .copyWith(
+                                        decoration: TextDecoration.lineThrough,
+                                      )
                                   : Theme.of(context).textTheme.subtitle1,
                             ),
                           ),
                           Text(
                             widget.task.description,
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: taskDone
+                                ? Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      decoration: TextDecoration.lineThrough,
+                                      color: MyThemeData.colorLightGreen,
+                                    )
+                                : Theme.of(context).textTheme.bodyText1,
                           ),
                         ],
                       ),
@@ -105,10 +118,10 @@ class _TaskWidgetState extends State<TaskWidget> {
                               borderRadius: BorderRadius.circular(12),
                               color: taskDone
                                   ? Colors.white
-                                  : Theme.of(context).primaryColor,
+                                  : Color.fromARGB(255, 224, 224, 224),
                             ),
                             padding: EdgeInsets.symmetric(
-                                vertical: 8, horizontal: 24),
+                                vertical: 6, horizontal: 10),
                             child: taskDone
                                 ? Text(
                                     'Done!',
