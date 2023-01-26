@@ -51,6 +51,11 @@ class MyThemeData {
         color: colorGreen,
         fontWeight: FontWeight.w400,
       ),
+      headline4: TextStyle(
+        fontSize: 20,
+        color: colorLightGreen,
+        fontWeight: FontWeight.w400,
+      ),
       headline3: TextStyle(
         fontSize: 18,
         color: colorWhite,
