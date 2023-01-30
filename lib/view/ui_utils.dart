@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_init_to_null, unused_local_variable
 
 import 'package:flutter/material.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'my_theme.dart';
 
 void showLoading(BuildContext context, String message,
@@ -58,17 +57,6 @@ void showMessage(BuildContext context, String message, String postiveActionText,
               fontWeight: FontWeight.w600),
         )));
   }
-  // AwesomeDialog(
-  //   context: context,
-  //autoDismiss: isCanclelable,
-  //   dialogType: DialogType.success,
-  //   animType: AnimType.topSlide,
-  //   title: 'Done',
-  //   desc: '$message',
-  //   btnOkOnPress: () {
-  //     actions;
-  //   },
-  // )..show();
   showDialog(
       barrierDismissible: isCanclelable,
       context: context,
