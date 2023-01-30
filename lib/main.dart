@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_with_firestore/view/home/add_task_screen.dart';
 
 import 'view/my_theme.dart';
 import 'view/setting/settings_tab.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         WelcomeScreen.routeName: (context) => WelcomeScreen(),
         HomeScreen.routeName: (context) => HomeScreen(),
         SettingsTab.routeName: (context) => SettingsTab(),
+        AddTaskScreen.routeName: (context) => AddTaskScreen(),
       },
       initialRoute: WelcomeScreen.routeName,
       theme: MyThemeData.lightTheme,

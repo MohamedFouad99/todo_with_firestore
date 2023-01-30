@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../setting/settings_tab.dart';
-import 'add_task_sheet.dart';
+import 'add_task_screen.dart';
 import 'tasks_list_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showAddTaskBottomSheet();
+          Navigator.pushNamed(context, AddTaskScreen.routeName);
         },
         shape: StadiumBorder(
           side: BorderSide(
@@ -48,23 +48,23 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 4,
           ),
         ),
-        child: Icon(Icons.add),
+        child: Icon(Icons.add_task),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: tabs[currentIndex],
     );
   }
-
-  void showAddTaskBottomSheet() {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        context: context,
-        builder: (buildContext) {
-          return SingleChildScrollView(
-              child: Container(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: AddTaskBottomSheet()));
-        });
-  }
+//todo replace to add task screen
+//   void showAddTaskBottomSheet() {
+//     showModalBottomSheet(
+//         isScrollControlled: true,
+//         context: context,
+//         builder: (buildContext) {
+//           return SingleChildScrollView(
+//               child: Container(
+//                   padding: EdgeInsets.only(
+//                       bottom: MediaQuery.of(context).viewInsets.bottom),
+//                   child: AddTaskScreen()));
+//         });
+//   }
 }

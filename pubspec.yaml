@@ -29,6 +29,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  awesome_dialog: ^3.0.2
   calendar_timeline: ^1.1.0
   calender_picker: ^1.0.7
   cloud_firestore: ^4.3.1
