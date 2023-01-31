@@ -38,6 +38,11 @@ void deleteTaskFromFireStore(Task task) {
   getTasksCollection().doc(task.id).delete();
 }
 
+void editIsDone(Task task) {
+  getTasksCollection()
+      .doc(task.id)
+      .update({'isDone': task.isDone ? false : true});
+}
 // void editTaskFromFireStore(Task task) {
 //   getTasksCollection()
 //       .doc(task.id)
