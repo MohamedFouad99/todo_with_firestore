@@ -16,7 +16,7 @@ class TaskWidget extends StatefulWidget {
 }
 
 class _TaskWidgetState extends State<TaskWidget> {
-  bool taskDone = false;
+  //bool taskDone = false;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                       height: 90,
                       decoration: BoxDecoration(
                         border: Border.all(
-                            color: taskDone
+                            color: widget.task.isDone
                                 ? MyThemeData.colorGreen
                                 : Theme.of(context).primaryColor,
                             width: 6),
@@ -81,7 +81,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                             padding: const EdgeInsets.only(top: 8),
                             child: Text(
                               widget.task.title,
-                              style: taskDone
+                              style: widget.task.isDone
                                   ? Theme.of(context)
                                       .textTheme
                                       .headline4!
@@ -93,7 +93,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                           ),
                           Text(
                             widget.task.description,
-                            style: taskDone
+                            style: widget.task.isDone
                                 ? Theme.of(context)
                                     .textTheme
                                     .bodyText1!
@@ -108,7 +108,8 @@ class _TaskWidgetState extends State<TaskWidget> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        taskDone = true;
+                        editIsDone(widget.task);
+                        //  taskDone = true;
                         setState(() {});
                       },
                       child: Row(
@@ -116,13 +117,13 @@ class _TaskWidgetState extends State<TaskWidget> {
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
-                              color: taskDone
+                              color: widget.task.isDone
                                   ? Colors.white
                                   : Color.fromARGB(255, 224, 224, 224),
                             ),
                             padding: EdgeInsets.symmetric(
                                 vertical: 6, horizontal: 10),
-                            child: taskDone
+                            child: widget.task.isDone
                                 ? Text(
                                     'Done!',
                                     style: TextStyle(
