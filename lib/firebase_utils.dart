@@ -44,11 +44,11 @@ void editIsDone(Task task) {
       .update({'isDone': task.isDone ? false : true});
 }
 
-Future<void> editTaskFromFireStore(Task task) {
+Future<void> editTaskFromFireStore(Task task, DateTime dateTime) {
   CollectionReference collectionReference = getTasksCollection();
   return collectionReference.doc(task.id).update({
     'title': task.title,
     'description': task.description,
-    "date": task.date,
+    "date": DateUtils.dateOnly(dateTime).millisecondsSinceEpoch,
   });
 }
