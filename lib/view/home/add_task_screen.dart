@@ -179,18 +179,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           ],
                         ),
                       ),
-                      // Text('task Date'),
-                      // SizedBox(
-                      //   height: 8,
-                      // ),
-                      // InkWell(
-                      //     onTap: () {
-                      //       chooseDate();
-                      //     },
-                      //     child: Text(
-                      //       '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
-                      //       textAlign: TextAlign.center,
-                      //     )),
                       SizedBox(
                         height: 16,
                       ),

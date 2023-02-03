@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:todo_with_firestore/view/home/edit_screen.dart';
 
 import '../../firebase_utils.dart';
 import '../../model/task.dart';
@@ -43,7 +44,10 @@ class _TaskWidgetState extends State<TaskWidget> {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(14),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, EditScreen.routeName,
+              arguments: widget.task);
+        },
         child: Container(
           height: 90,
           padding: const EdgeInsets.symmetric(
