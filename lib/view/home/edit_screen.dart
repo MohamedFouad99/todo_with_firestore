@@ -227,7 +227,7 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   void editTask() {
-    editTaskFromFireStore(task).then((value) {
+    editTaskFromFireStore(task, selectedDate).then((value) {
       showLoading(context, 'loading...', isCancelable: false);
       hideDialoge(context);
       showMessage(context, 'Task was edited successfully', 'ok', () {
