@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'my_theme.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 void showLoading(BuildContext context, String message,
     {bool isCancelable = false}) {
@@ -57,6 +58,7 @@ void showMessage(BuildContext context, String message, String postiveActionText,
               fontWeight: FontWeight.w600),
         )));
   }
+
   showDialog(
       barrierDismissible: isCanclelable,
       context: context,
@@ -74,4 +76,39 @@ void showMessage(BuildContext context, String message, String postiveActionText,
             ),
             actions: actions);
       });
+}
+
+void showAwsomeDialogSuccess(BuildContext context, String content,
+    {String title = '', bool isCanclelable = true}) {
+  AwesomeDialog(
+    context: context,
+    dialogType: DialogType.success,
+    borderSide: const BorderSide(
+      color: Colors.green,
+      width: 1,
+    ),
+    width: MediaQuery.of(context).size.width * .95,
+    buttonsBorderRadius: const BorderRadius.all(
+      Radius.circular(14),
+    ),
+    dismissOnTouchOutside: isCanclelable,
+    dismissOnBackKeyPress: isCanclelable,
+    // onDismissCallback: (type) {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       content: Text('Dismissed by $type'),
+    //     ),
+    //   );
+    // },
+    headerAnimationLoop: true,
+    animType: AnimType.scale,
+    title: title,
+    desc: content,
+    showCloseIcon: false,
+    // btnCancelOnPress: () {},
+    btnOkOnPress: () {
+      Navigator.pop(context);
+      //  Navigator.pop(context);
+    },
+  ).show();
 }
