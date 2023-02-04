@@ -230,10 +230,12 @@ class _EditScreenState extends State<EditScreen> {
     editTaskFromFireStore(task, selectedDate).then((value) {
       showLoading(context, 'loading...', isCancelable: false);
       hideDialoge(context);
-      showMessage(context, 'Task was edited successfully', 'ok', () {
-        Navigator.pop(context);
-        Navigator.pop(context);
-      }, isCanclelable: false);
+      showAwsomeDialogSuccess(context, 'Task was edited successfully',
+          title: 'Done', isCanclelable: false);
+      // showMessage(context, 'Task was edited successfully', 'ok', () {
+      //   Navigator.pop(context);
+      //   Navigator.pop(context);
+      // }, isCanclelable: false);
     }).catchError((onError) {
       hideDialoge(context);
       showMessage(context, 'some thing went wrong. try again later', 'ok', () {
