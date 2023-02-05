@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:todo_with_firestore/view/home/edit_screen.dart';
+import 'package:todo_with_firestore/view/screens/edit_screen.dart';
 
-import '../../firebase_utils.dart';
+import '../../utils/firebase_utils.dart';
 import '../../model/task.dart';
-import '../my_theme.dart';
+import '../../utils/my_theme.dart';
 
 class TaskWidget extends StatefulWidget {
   Task task;

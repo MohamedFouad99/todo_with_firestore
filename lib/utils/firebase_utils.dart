@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'model/task.dart';
+import '../model/task.dart';
 
 CollectionReference<Task> getTasksCollection() {
   var typedCollection = FirebaseFirestore.instance

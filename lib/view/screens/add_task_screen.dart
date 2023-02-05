@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:todo_with_firestore/view/my_theme.dart';
+import 'package:todo_with_firestore/utils/my_theme.dart';
 
-import '../../firebase_utils.dart';
+import '../../utils/firebase_utils.dart';
 import '../../model/task.dart';
-import '../ui_utils.dart';
+import '../../utils/ui_utils.dart';
 
 class AddTaskScreen extends StatefulWidget {
   static const String routeName = 'addTask';

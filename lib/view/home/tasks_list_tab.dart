@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../../model/task.dart';
-import '../../firebase_utils.dart';
+import '../../utils/firebase_utils.dart';
 import 'task_widget.dart';
 import 'package:calender_picker/calender_picker.dart';
 

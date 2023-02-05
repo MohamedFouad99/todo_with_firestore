@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 
-import '../../firebase_utils.dart';
+import '../../utils/firebase_utils.dart';
 import '../../model/task.dart';
-import '../my_theme.dart';
-import '../ui_utils.dart';
+import '../../utils/my_theme.dart';
+import '../../utils/ui_utils.dart';
 import 'package:intl/intl.dart';
 
 class EditScreen extends StatefulWidget {
