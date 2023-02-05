@@ -17,16 +17,17 @@ class EditScreen extends StatefulWidget {
 }
 
 class _EditScreenState extends State<EditScreen> {
-  late DateTime selectedDate = DateTime(2030);
+  DateTime? selectedDate;
   GlobalKey<FormState> formController = GlobalKey<FormState>();
   late Task task;
-
+  late DateTime date;
   @override
   Widget build(BuildContext context) {
     task = ModalRoute.of(context)!.settings.arguments as Task;
     int timestamp = task.date;
-    DateTime date = DateTime.fromMillisecondsSinceEpoch(timestamp);
+    date = DateTime.fromMillisecondsSinceEpoch(timestamp);
     String formattedDate = DateFormat('yyyy-MM-dd').format(date);
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -161,9 +162,9 @@ class _EditScreenState extends State<EditScreen> {
                                                 fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        selectedDate == DateTime(2030)
+                                        selectedDate == null
                                             ? formattedDate
-                                            : '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
+                                            : '${selectedDate!.year}-${selectedDate!.month}-${selectedDate!.day}',
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyText2!
@@ -227,15 +228,12 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   void editTask() {
-    editTaskFromFireStore(task, selectedDate).then((value) {
+    if (selectedDate == null) selectedDate = date;
+    editTaskFromFireStore(task, selectedDate!).then((value) {
       showLoading(context, 'loading...', isCancelable: false);
       hideDialoge(context);
       showAwsomeDialogSuccess(context, 'Task was edited successfully',
           title: 'Done', isCanclelable: false);
-      // showMessage(context, 'Task was edited successfully', 'ok', () {
-      //   Navigator.pop(context);
-      //   Navigator.pop(context);
-      // }, isCanclelable: false);
     }).catchError((onError) {
       hideDialoge(context);
       showMessage(context, 'some thing went wrong. try again later', 'ok', () {

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_init_to_null, unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:todo_with_firestore/firebase_utils.dart';
 import 'my_theme.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
@@ -78,6 +79,40 @@ void showMessage(BuildContext context, String message, String postiveActionText,
       });
 }
 
+void showAwsomeDialogFailure(BuildContext context, String content,
+    {String title = '', bool isCanclelable = true}) {
+  AwesomeDialog(
+    context: context,
+    dialogType: DialogType.error,
+    borderSide: const BorderSide(
+      color: Colors.red,
+      width: 1,
+    ),
+    width: MediaQuery.of(context).size.width * .95,
+    buttonsBorderRadius: const BorderRadius.all(
+      Radius.circular(14),
+    ),
+    dismissOnTouchOutside: isCanclelable,
+    dismissOnBackKeyPress: isCanclelable,
+    // onDismissCallback: (type) {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       content: Text('Dismissed by $type'),
+    //     ),
+    //   );
+    // },
+    headerAnimationLoop: true,
+    animType: AnimType.scale,
+    title: title,
+    desc: content,
+    showCloseIcon: false,
+    // btnCancelOnPress: () {},
+    btnOkOnPress: () {
+      Navigator.pop(context);
+    },
+  ).show();
+}
+
 void showAwsomeDialogSuccess(BuildContext context, String content,
     {String title = '', bool isCanclelable = true}) {
   AwesomeDialog(
@@ -108,7 +143,6 @@ void showAwsomeDialogSuccess(BuildContext context, String content,
     // btnCancelOnPress: () {},
     btnOkOnPress: () {
       Navigator.pop(context);
-      //  Navigator.pop(context);
     },
   ).show();
 }
