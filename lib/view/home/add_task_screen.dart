@@ -232,10 +232,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       showLoading(context, 'loading...', isCancelable: false);
       addTaskToFireStore(task).then((value) {
         hideDialoge(context);
-        showMessage(context, 'Task was added successfully', 'ok', () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        }, isCanclelable: false);
+        showAwsomeDialogSuccess(context, 'Task was added successfully',
+            title: 'Done', isCanclelable: false);
       }).catchError((onError) {
         hideDialoge(context);
         showMessage(context, 'some thing went wrong. try again later', 'ok',
