@@ -1,13 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'view/home/add_task_screen.dart';
-import 'view/home/edit_screen.dart';
 
-import 'view/my_theme.dart';
+import 'firebase_options.dart';
+import 'utils/my_theme.dart';
+import 'view/home/home_screen.dart';
+import 'view/screens/add_task_screen.dart';
+import 'view/screens/edit_screen.dart';
 import 'view/setting/settings_tab.dart';
 import 'view/start/welcome_screen.dart';
-import 'firebase_options.dart';
-import 'view/home/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
