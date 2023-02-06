@@ -1,0 +1,22 @@
+{
+  "todaytasks": "مهام اليوم",
+  "managetask": "إدارة المهام الخاصة بك",
+  "managetaskdesc": "قم بإدارة مهامك اليومية بسهولة لزيادة إنتاجيتك من خلال التقدم التالي الذي حققته",
+  "done": "تم",
+  "addtasktitle": "إضافة مهمة",
+  "addtaskbtn": "إضافة المهمة",
+  "title": "العنوان",
+  "desc": "الوصف",
+  "date": "التاريخ",
+  "pleaseentertitle": "الرجاء إدخال العنوان",
+  "pleaseentertaskdescription":"الرجاء إدخال وصف المهمة",
+  "loading": "تحميل...",
+  "taskwasaddedsuccessfully": "تم إضافة المهمة بنجاح",
+  "taskwaseditedsuccessfully": "تم تعديل المهمة بنجاح",
+  "somethingwentwrongtryagainlater": "هناك خطأ ما. حاول مرة أخرى في وقت لاحق",
+  "sorry": "أسف",
+  "edittasktitle": "تعديل المهام",
+  "savechange": "حفظ التغيرات",
+  "delete": "حذف",
+  "getStarted": "لنبدأ"
+}

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../utils/firebase_utils.dart';
 import '../../model/task.dart';
 import '../../utils/my_theme.dart';
@@ -34,7 +34,7 @@ class _EditScreenState extends State<EditScreen> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            "edit task",
+            AppLocalizations.of(context)!.edittasktitle,
             style: Theme.of(context).textTheme.headline2,
           ),
         ),
@@ -62,7 +62,7 @@ class _EditScreenState extends State<EditScreen> {
                             fillColor:
                                 MyThemeData.lightTheme.colorScheme.onPrimary,
                             filled: true,
-                            labelText: 'title',
+                            labelText: AppLocalizations.of(context)!.title,
                             labelStyle: TextStyle(),
                             border: InputBorder.none,
                             focusedBorder: OutlineInputBorder(
@@ -86,7 +86,8 @@ class _EditScreenState extends State<EditScreen> {
                           },
                           validator: (text) {
                             if (text == null || text.isEmpty) {
-                              return 'please enter title';
+                              return AppLocalizations.of(context)!
+                                  .pleaseentertitle;
                             }
                             return null;
                           },
@@ -102,7 +103,7 @@ class _EditScreenState extends State<EditScreen> {
                             fillColor:
                                 MyThemeData.lightTheme.colorScheme.onPrimary,
                             filled: true,
-                            labelText: 'description',
+                            labelText: AppLocalizations.of(context)!.desc,
                             labelStyle: TextStyle(),
                             border: InputBorder.none,
                             focusedBorder: OutlineInputBorder(
@@ -124,7 +125,8 @@ class _EditScreenState extends State<EditScreen> {
                           },
                           validator: (text) {
                             if (text == null || text.isEmpty) {
-                              return 'please enter task description';
+                              return AppLocalizations.of(context)!
+                                  .pleaseentertaskdescription;
                             }
                             return null;
                           },
@@ -153,7 +155,7 @@ class _EditScreenState extends State<EditScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        'date:',
+                                        AppLocalizations.of(context)!.date,
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyText2!
@@ -207,7 +209,7 @@ class _EditScreenState extends State<EditScreen> {
                     onPressed: () {
                       editTask();
                     },
-                    child: Text('Sava Changes')),
+                    child: Text(AppLocalizations.of(context)!.savechange)),
               )
             ]),
           ),
@@ -230,15 +232,17 @@ class _EditScreenState extends State<EditScreen> {
   void editTask() {
     if (selectedDate == null) selectedDate = date;
     editTaskFromFireStore(task, selectedDate!).then((value) {
-      showLoading(context, 'loading...', isCancelable: false);
+      showLoading(context, AppLocalizations.of(context)!.loading,
+          isCancelable: false);
       hideDialoge(context);
-      showAwsomeDialogSuccess(context, 'Task was edited successfully',
-          title: 'Done', isCanclelable: false);
+      showAwsomeDialogSuccess(
+          context, AppLocalizations.of(context)!.taskwaseditedsuccessfully,
+          title: AppLocalizations.of(context)!.done, isCanclelable: false);
     }).catchError((onError) {
       hideDialoge(context);
-      showMessage(context, 'some thing went wrong. try again later', 'ok', () {
-        Navigator.pop(context);
-      });
+      showAwsomeDialogSuccess(context,
+          AppLocalizations.of(context)!.somethingwentwrongtryagainlater,
+          title: AppLocalizations.of(context)!.sorry, isCanclelable: false);
     });
   }
 }

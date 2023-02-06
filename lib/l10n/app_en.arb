@@ -1,0 +1,22 @@
+{
+  "todaytasks": "today tasks",
+  "managetask": "Manage your tasks",
+  "managetaskdesc": "Manage your daily tasks easily to increase\nyour productivity with following progress\nyou have achieved",
+  "done": "Done!",
+  "addtasktitle": "add task",
+  "addtaskbtn": "Add Task",
+  "title": "title",
+  "desc": "description",
+  "date": "date",
+  "pleaseentertitle": "please enter title",
+  "pleaseentertaskdescription": "please enter task description",
+  "loading": "loading...",
+  "taskwasaddedsuccessfully": "Task was added successfully",
+  "taskwaseditedsuccessfully": "Task was edited successfully",
+  "somethingwentwrongtryagainlater": "some thing went wrong. try again later",
+  "sorry": "Sorry",
+  "edittasktitle": "edit task",
+  "savechange": "Sava Changes",
+  "delete": "Delete",
+  "getStarted": "Get Started"
+}

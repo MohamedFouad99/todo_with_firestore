@@ -2,7 +2,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../model/task.dart';
 import '../../utils/firebase_utils.dart';
 import 'task_widget.dart';
@@ -24,7 +25,7 @@ class _TasksListTabState extends State<TasksListTab> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "today tasks",
+          AppLocalizations.of(context)!.todaytasks,
           style: Theme.of(context).textTheme.headline2,
         ),
       ),
@@ -78,7 +79,8 @@ class _TasksListTabState extends State<TasksListTab> {
                     child: CircularProgressIndicator(),
                   );
                 } else if (snapshot.hasError) {
-                  return Text('something went wrong');
+                  return Text(AppLocalizations.of(context)!
+                      .somethingwentwrongtryagainlater);
                   // show try again button
                 }
                 // we got data// show data

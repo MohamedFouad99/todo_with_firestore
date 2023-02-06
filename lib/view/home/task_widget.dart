@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:todo_with_firestore/view/screens/edit_screen.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../utils/firebase_utils.dart';
 import '../../model/task.dart';
 import '../../utils/my_theme.dart';
@@ -36,7 +36,7 @@ class _TaskWidgetState extends State<TaskWidget> {
               bottomRight: Radius.circular(18),
               topRight: Radius.circular(18),
             ),
-            label: 'Delete',
+            label: AppLocalizations.of(context)!.delete,
             backgroundColor: Theme.of(context).colorScheme.error,
             icon: Icons.delete,
           ),
@@ -129,7 +129,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                                 vertical: 6, horizontal: 10),
                             child: widget.task.isDone
                                 ? Text(
-                                    'Done!',
+                                    AppLocalizations.of(context)!.done,
                                     style: TextStyle(
                                         color: MyThemeData.colorGreen,
                                         fontSize: 20,
