@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_with_firestore/view/home/home_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WelcomeScreen extends StatelessWidget {
   static const String routeName = 'welcome';
@@ -11,7 +12,7 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          tooltip: 'Get Started',
+          tooltip: AppLocalizations.of(context)!.getStarted,
           onPressed: () {
             Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
           },
@@ -34,7 +35,7 @@ class WelcomeScreen extends StatelessWidget {
                 height: 25,
               ),
               Text(
-                'Manage your tasks',
+                AppLocalizations.of(context)!.managetask,
                 style: Theme.of(context).textTheme.headline1,
               ),
               SizedBox(
@@ -45,7 +46,7 @@ class WelcomeScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      'Manage your daily tasks easily to increase\nyour productivity with following progress\nyou have achieved',
+                      AppLocalizations.of(context)!.managetaskdesc,
                       style: Theme.of(context).textTheme.headline3,
                     ),
                   ],

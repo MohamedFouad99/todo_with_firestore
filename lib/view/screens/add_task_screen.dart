@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:todo_with_firestore/utils/my_theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../utils/firebase_utils.dart';
 import '../../model/task.dart';
 import '../../utils/ui_utils.dart';
@@ -28,7 +28,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "add task",
+          AppLocalizations.of(context)!.addtasktitle,
           style: Theme.of(context).textTheme.headline2,
         ),
       ),
@@ -55,7 +55,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           fillColor:
                               MyThemeData.lightTheme.colorScheme.onPrimary,
                           filled: true,
-                          labelText: 'title',
+                          labelText: AppLocalizations.of(context)!.title,
                           labelStyle: TextStyle(),
                           border: InputBorder.none,
                           focusedBorder: OutlineInputBorder(
@@ -79,7 +79,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         },
                         validator: (text) {
                           if (text == null || text.isEmpty) {
-                            return 'please enter title';
+                            return AppLocalizations.of(context)!
+                                .pleaseentertitle;
                           }
                           return null;
                         },
@@ -94,7 +95,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           fillColor:
                               MyThemeData.lightTheme.colorScheme.onPrimary,
                           filled: true,
-                          labelText: 'description',
+                          labelText: AppLocalizations.of(context)!.desc,
                           labelStyle: TextStyle(),
                           border: InputBorder.none,
                           focusedBorder: OutlineInputBorder(
@@ -116,7 +117,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         },
                         validator: (text) {
                           if (text == null || text.isEmpty) {
-                            return 'please enter task description';
+                            return AppLocalizations.of(context)!
+                                .pleaseentertaskdescription;
                           }
                           return null;
                         },
@@ -145,7 +147,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'date:',
+                                      AppLocalizations.of(context)!.date,
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyText2!
@@ -200,7 +202,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   onPressed: () {
                     addTask();
                   },
-                  child: Text('Add Task')),
+                  child: Text(AppLocalizations.of(context)!.addtaskbtn)),
             )
           ],
         ),
@@ -229,17 +231,18 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           title: title,
           description: description,
           date: DateUtils.dateOnly(selectedDate).millisecondsSinceEpoch);
-      showLoading(context, 'loading...', isCancelable: false);
+      showLoading(context, AppLocalizations.of(context)!.loading,
+          isCancelable: false);
       addTaskToFireStore(task).then((value) {
         hideDialoge(context);
-        showAwsomeDialogSuccess(context, 'Task was added successfully',
-            title: 'Done', isCanclelable: false);
+        showAwsomeDialogSuccess(
+            context, AppLocalizations.of(context)!.taskwasaddedsuccessfully,
+            title: AppLocalizations.of(context)!.done, isCanclelable: false);
       }).catchError((onError) {
         hideDialoge(context);
-        showMessage(context, 'some thing went wrong. try again later', 'ok',
-            () {
-          Navigator.pop(context);
-        });
+        showAwsomeDialogSuccess(context,
+            AppLocalizations.of(context)!.somethingwentwrongtryagainlater,
+            title: AppLocalizations.of(context)!.sorry, isCanclelable: false);
       });
     }
   }
