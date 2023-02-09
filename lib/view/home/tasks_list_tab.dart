@@ -81,7 +81,6 @@ class _TasksListTabState extends State<TasksListTab> {
                 } else if (snapshot.hasError) {
                   return Text(AppLocalizations.of(context)!
                       .somethingwentwrongtryagainlater);
-                  // show try again button
                 }
                 // we got data// show data
                 List<Task> tasksList = snapshot.data?.docs
