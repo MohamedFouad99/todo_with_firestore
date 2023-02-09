@@ -18,5 +18,6 @@
   "edittasktitle": "edit task",
   "savechange": "Sava Changes",
   "delete": "Delete",
-  "getStarted": "Get Started"
+  "getStarted": "Get Started",
+  "setting": "setting"
 }

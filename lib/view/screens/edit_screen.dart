@@ -230,10 +230,10 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   void editTask() {
-    if (selectedDate == null) selectedDate = date;
+    selectedDate ??= date;
+    showLoading(context, AppLocalizations.of(context)!.loading,
+        isCancelable: false);
     editTaskFromFireStore(task, selectedDate!).then((value) {
-      showLoading(context, AppLocalizations.of(context)!.loading,
-          isCancelable: false);
       hideDialoge(context);
       showAwsomeDialogSuccess(
           context, AppLocalizations.of(context)!.taskwaseditedsuccessfully,

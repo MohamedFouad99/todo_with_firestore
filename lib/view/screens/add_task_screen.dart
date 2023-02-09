@@ -225,8 +225,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
   void addTask() {
     if (formController.currentState?.validate() == true) {
-      // insert task
-      //now have: title,desc
       Task task = Task(
           title: title,
           description: description,
