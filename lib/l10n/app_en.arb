@@ -19,5 +19,11 @@
   "savechange": "Sava Changes",
   "delete": "Delete",
   "getStarted": "Get Started",
-  "setting": "setting"
+  "setting": "settings",
+  "mode": "mode",
+  "dark": "dark",
+  "light": "light",
+  "language": "language",
+  "english":  "english",
+  "arabic": "arabic"
 }

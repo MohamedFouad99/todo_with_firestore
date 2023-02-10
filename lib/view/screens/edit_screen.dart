@@ -59,11 +59,11 @@ class _EditScreenState extends State<EditScreen> {
                         TextFormField(
                           initialValue: task.title,
                           decoration: InputDecoration(
-                            fillColor:
-                                MyThemeData.lightTheme.colorScheme.onPrimary,
+                            fillColor: Theme.of(context).colorScheme.onPrimary,
                             filled: true,
                             labelText: AppLocalizations.of(context)!.title,
-                            labelStyle: TextStyle(),
+                            labelStyle: TextStyle(
+                                color: Theme.of(context).colorScheme.onSurface),
                             border: InputBorder.none,
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
@@ -100,11 +100,11 @@ class _EditScreenState extends State<EditScreen> {
                           minLines: 4,
                           maxLines: 4,
                           decoration: InputDecoration(
-                            fillColor:
-                                MyThemeData.lightTheme.colorScheme.onPrimary,
+                            fillColor: Theme.of(context).colorScheme.onPrimary,
                             filled: true,
                             labelText: AppLocalizations.of(context)!.desc,
-                            labelStyle: TextStyle(),
+                            labelStyle: TextStyle(
+                                color: Theme.of(context).colorScheme.onSurface),
                             border: InputBorder.none,
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
@@ -144,8 +144,8 @@ class _EditScreenState extends State<EditScreen> {
                               Container(
                                 height: MediaQuery.of(context).size.height * .1,
                                 decoration: BoxDecoration(
-                                    color: MyThemeData
-                                        .lightTheme.colorScheme.onPrimary,
+                                    color:
+                                        Theme.of(context).colorScheme.onPrimary,
                                     borderRadius: BorderRadius.circular(12)),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -197,6 +197,8 @@ class _EditScreenState extends State<EditScreen> {
                 width: MediaQuery.of(context).size.width * .8,
                 child: ElevatedButton(
                     style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                            Theme.of(context).primaryColor),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
@@ -209,7 +211,11 @@ class _EditScreenState extends State<EditScreen> {
                     onPressed: () {
                       editTask();
                     },
-                    child: Text(AppLocalizations.of(context)!.savechange)),
+                    child: Text(
+                      AppLocalizations.of(context)!.savechange,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.onSecondary),
+                    )),
               )
             ]),
           ),

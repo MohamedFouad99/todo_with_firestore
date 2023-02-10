@@ -19,5 +19,11 @@
   "savechange": "حفظ التغيرات",
   "delete": "حذف",
   "getStarted": "لنبدأ",
-  "setting": "الإعدادت"
+  "setting": "الإعدادت",
+  "mode": "الوضع",
+  "dark": "داكن",
+  "light": "نهاري",
+  "language": "اللغة",
+  "english":  "الانجليزية",
+  "arabic": "العربية"
 }
