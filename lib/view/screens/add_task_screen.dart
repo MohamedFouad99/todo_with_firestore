@@ -52,11 +52,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       ),
                       TextFormField(
                         decoration: InputDecoration(
-                          fillColor:
-                              MyThemeData.lightTheme.colorScheme.onPrimary,
+                          fillColor: Theme.of(context).colorScheme.onPrimary,
                           filled: true,
                           labelText: AppLocalizations.of(context)!.title,
-                          labelStyle: TextStyle(),
+                          labelStyle: TextStyle(
+                              color: Theme.of(context).colorScheme.onSurface),
                           border: InputBorder.none,
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(18),
@@ -92,11 +92,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         minLines: 4,
                         maxLines: 4,
                         decoration: InputDecoration(
-                          fillColor:
-                              MyThemeData.lightTheme.colorScheme.onPrimary,
+                          fillColor: Theme.of(context).colorScheme.onPrimary,
                           filled: true,
                           labelText: AppLocalizations.of(context)!.desc,
-                          labelStyle: TextStyle(),
+                          labelStyle: TextStyle(
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
                           border: InputBorder.none,
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(18),
@@ -136,8 +137,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                             Container(
                               height: MediaQuery.of(context).size.height * .1,
                               decoration: BoxDecoration(
-                                  color: MyThemeData
-                                      .lightTheme.colorScheme.onPrimary,
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary,
                                   borderRadius: BorderRadius.circular(12)),
                               child: Padding(
                                 padding:
@@ -191,6 +192,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               width: MediaQuery.of(context).size.width * .8,
               child: ElevatedButton(
                   style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                          Theme.of(context).primaryColor),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0),
@@ -202,7 +205,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   onPressed: () {
                     addTask();
                   },
-                  child: Text(AppLocalizations.of(context)!.addtaskbtn)),
+                  child: Text(
+                    AppLocalizations.of(context)!.addtaskbtn,
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSecondary),
+                  )),
             )
           ],
         ),

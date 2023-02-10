@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_with_firestore/view/screens/edit_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../providers/language_provider.dart';
 import '../../utils/firebase_utils.dart';
 import '../../model/task.dart';
 import '../../utils/my_theme.dart';
@@ -21,6 +23,7 @@ class _TaskWidgetState extends State<TaskWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var providerLanguage = Provider.of<LanguageProvider>(context);
     return Slidable(
       startActionPane: ActionPane(
         motion: DrawerMotion(),
@@ -30,12 +33,19 @@ class _TaskWidgetState extends State<TaskWidget> {
             onPressed: (buildContext) {
               deleteTaskFromFireStore(widget.task);
             },
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(140),
-              topLeft: Radius.circular(140),
-              bottomRight: Radius.circular(18),
-              topRight: Radius.circular(18),
-            ),
+            borderRadius: providerLanguage.currentLanguage == 'en'
+                ? BorderRadius.only(
+                    bottomLeft: Radius.circular(140),
+                    topLeft: Radius.circular(140),
+                    bottomRight: Radius.circular(18),
+                    topRight: Radius.circular(18),
+                  )
+                : BorderRadius.only(
+                    bottomRight: Radius.circular(140),
+                    topRight: Radius.circular(140),
+                    bottomLeft: Radius.circular(18),
+                    topLeft: Radius.circular(18),
+                  ),
             label: AppLocalizations.of(context)!.delete,
             backgroundColor: Theme.of(context).colorScheme.error,
             icon: Icons.delete,
@@ -57,7 +67,7 @@ class _TaskWidgetState extends State<TaskWidget> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
             elevation: 0,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onPrimary,
             child: Stack(
               children: [
                 Row(
@@ -71,9 +81,13 @@ class _TaskWidgetState extends State<TaskWidget> {
                                 ? MyThemeData.colorGreen
                                 : Theme.of(context).primaryColor,
                             width: 6),
-                        borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(14.0),
-                            topLeft: Radius.circular(14.0)),
+                        borderRadius: providerLanguage.currentLanguage == 'en'
+                            ? BorderRadius.only(
+                                bottomLeft: Radius.circular(14.0),
+                                topLeft: Radius.circular(14.0))
+                            : BorderRadius.only(
+                                bottomRight: Radius.circular(14.0),
+                                topRight: Radius.circular(14.0)),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -122,8 +136,8 @@ class _TaskWidgetState extends State<TaskWidget> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
                               color: widget.task.isDone
-                                  ? Colors.white
-                                  : Color.fromARGB(255, 224, 224, 224),
+                                  ? Theme.of(context).colorScheme.onPrimary
+                                  : Theme.of(context).colorScheme.secondary,
                             ),
                             padding: EdgeInsets.symmetric(
                                 vertical: 6, horizontal: 10),

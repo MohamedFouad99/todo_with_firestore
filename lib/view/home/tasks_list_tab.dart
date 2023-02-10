@@ -4,7 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import '../../../model/task.dart';
+import '../../providers/language_provider.dart';
 import '../../utils/firebase_utils.dart';
 import 'task_widget.dart';
 import 'package:calender_picker/calender_picker.dart';
@@ -19,6 +21,7 @@ class _TasksListTabState extends State<TasksListTab> {
 
   @override
   Widget build(BuildContext context) {
+    var providerLanguage = Provider.of<LanguageProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -33,15 +36,16 @@ class _TasksListTabState extends State<TasksListTab> {
         child: Column(
           children: [
             CalenderPicker(
-              dateTextStyle: TextStyle(color: Colors.grey),
-              dayTextStyle: TextStyle(color: Colors.grey),
-              locale: 'en',
+              dateTextStyle:
+                  TextStyle(color: Theme.of(context).colorScheme.secondary),
+              dayTextStyle:
+                  TextStyle(color: Theme.of(context).colorScheme.secondary),
+              locale: (providerLanguage.currentLanguage),
               DateTime.now(),
               initialSelectedDate: DateTime.now(),
-              selectionColor: Colors.white,
-              selectedTextColor: Colors.blue,
+              selectionColor: Theme.of(context).colorScheme.onPrimary,
+              selectedTextColor: Theme.of(context).primaryColor,
               onDateChange: (date) {
-                // New date selected
                 setState(() {
                   selectedDate = date;
                 });
