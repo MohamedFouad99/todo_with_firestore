@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, must_be_immutable
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_with_firestore/providers/language_provider.dart';
 import 'package:todo_with_firestore/providers/theme_provider.dart';
 import 'firebase_options.dart';
@@ -20,6 +21,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
@@ -34,13 +36,13 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+  late LanguageProvider providerLanguage;
+  late ThemeProvider provider;
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<ThemeProvider>(context);
-    var providerLanguage = Provider.of<LanguageProvider>(context);
+    provider = Provider.of<ThemeProvider>(context);
+    providerLanguage = Provider.of<LanguageProvider>(context);
+    sharedPref();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
@@ -49,6 +51,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      //locale: Locale(providerLanguage.currentLanguage),
       locale: Locale(providerLanguage.currentLanguage),
       supportedLocales: [
         Locale('en'), // English
@@ -66,5 +69,17 @@ class MyApp extends StatelessWidget {
       darkTheme: MyThemeData.darkTheme,
       themeMode: provider.themeMode,
     );
+  }
+
+  void sharedPref() async {
+    final prefs = await SharedPreferences.getInstance();
+    providerLanguage.changeLanguage(prefs.getString('language') ?? 'en');
+    if (prefs.getString('theme') == 'light') {
+      provider.changeTheme(ThemeMode.light);
+    } else if (prefs.getString('theme') == 'dark') {
+      provider.changeTheme(ThemeMode.dark);
+    } else {
+      provider.changeTheme(ThemeMode.dark);
+    }
   }
 }
