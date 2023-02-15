@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     provider = Provider.of<ThemeProvider>(context);
     providerLanguage = Provider.of<LanguageProvider>(context);
-    sharedPref();
+    sharedPref;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
