@@ -51,28 +51,9 @@ class _TasksListTabState extends State<TasksListTab> {
                 });
               },
             ),
-
             SizedBox(
               height: 16,
             ),
-            // CalendarTimeline(
-            //   initialDate: selectedDate,
-            //   firstDate: DateTime.now().subtract(Duration(days: 365)),
-            //   lastDate: DateTime.now().add(Duration(days: 365)),
-            //   onDateSelected: (date) {
-            //     if (date == null) return;
-            //     selectedDate = date;
-            //     setState(() {});
-            //   },
-            //   leftMargin: 30,
-            //   monthColor: Colors.black,
-            //   dayColor: Colors.black,
-            //   activeDayColor: Theme.of(context).primaryColor,
-            //   activeBackgroundDayColor: Colors.white,
-            //   dotsColor: Theme.of(context).primaryColor,
-            //   selectableDayPredicate: (date) => true,
-            //   locale: 'en',
-            // ),
             Expanded(
                 child: StreamBuilder<QuerySnapshot<Task>>(
               stream: listenForTask(selectedDate),

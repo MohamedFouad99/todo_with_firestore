@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_init_to_null, unused_local_variable
 
 import 'package:flutter/material.dart';
-import 'package:todo_with_firestore/utils/firebase_utils.dart';
 import 'my_theme.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
