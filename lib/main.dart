@@ -11,11 +11,11 @@ import 'package:todo_with_firestore/providers/language_provider.dart';
 import 'package:todo_with_firestore/providers/theme_provider.dart';
 import 'firebase_options.dart';
 import 'utils/my_theme.dart';
-import 'view/home/home_screen.dart';
-import 'view/screens/add_task_screen.dart';
-import 'view/screens/edit_screen.dart';
-import 'view/setting/settings_tab.dart';
-import 'view/start/welcome_screen.dart';
+import 'view/add_task_screen.dart';
+import 'view/edit_screen.dart';
+import 'view/home_screen.dart';
+import 'view/settings_screen.dart';
+import 'view/welcome_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

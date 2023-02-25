@@ -3,12 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_with_firestore/view/screens/edit_screen.dart';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../providers/language_provider.dart';
 import '../../utils/firebase_utils.dart';
 import '../../model/task.dart';
 import '../../utils/my_theme.dart';
+import '../edit_screen.dart';
 
 class TaskWidget extends StatefulWidget {
   Task task;
@@ -19,8 +20,6 @@ class TaskWidget extends StatefulWidget {
 }
 
 class _TaskWidgetState extends State<TaskWidget> {
-  //bool taskDone = false;
-
   @override
   Widget build(BuildContext context) {
     var providerLanguage = Provider.of<LanguageProvider>(context);

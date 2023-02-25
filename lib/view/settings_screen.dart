@@ -5,8 +5,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_with_firestore/providers/language_provider.dart';
 
-import '../../providers/theme_provider.dart';
-import '../../utils/my_theme.dart';
+import '../providers/theme_provider.dart';
+import '../utils/my_theme.dart';
 
 class SettingsTab extends StatefulWidget {
   static const String routeName = 'setting';

@@ -1,6 +1,7 @@
 # todo_with_firestore
 
-A new Flutter project.
+Todo app using firebase.
+Link Project To FireStore And CRUD It
 
 ## Getting Started
 

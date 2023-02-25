@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../screens/add_task_screen.dart';
-import '../setting/settings_tab.dart';
-import 'tasks_list_tab.dart';
+
+import 'add_task_screen.dart';
+import 'settings_screen.dart';
+import 'widgets/tasks_list_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
@@ -54,17 +55,4 @@ class _HomeScreenState extends State<HomeScreen> {
       body: tabs[currentIndex],
     );
   }
-//todo replace to add task screen
-//   void showAddTaskBottomSheet() {
-//     showModalBottomSheet(
-//         isScrollControlled: true,
-//         context: context,
-//         builder: (buildContext) {
-//           return SingleChildScrollView(
-//               child: Container(
-//                   padding: EdgeInsets.only(
-//                       bottom: MediaQuery.of(context).viewInsets.bottom),
-//                   child: AddTaskScreen()));
-//         });
-//   }
 }
